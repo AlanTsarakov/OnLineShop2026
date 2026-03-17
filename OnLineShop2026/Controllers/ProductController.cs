@@ -6,7 +6,8 @@ namespace OnLineShop2026.Controllers
 {
     public class ProductController : Controller
     {
-        ProductRepository productRepository = new ProductRepository();
+        //ProductRepositoryInMemory productRepository = new ProductRepositoryInMemory();
+        ProductRepositoryFromFile productRepository = new ProductRepositoryFromFile();
 
         public IActionResult Index(Guid id)
         {
