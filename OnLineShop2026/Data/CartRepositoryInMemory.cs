@@ -9,17 +9,41 @@ namespace OnLineShop2026.Data
             new Cart()
         };
 
-            
-            public void Increment(Guid idProduct)
+        public void Add(Product product, int idUser)
         {
-            Cart cart = TryGetByUserId(int userId);
-            CartItem item = cart.CartItems.FirstOrDefault(x => x.Product.Id == idProduct);
+            var cart = carts.FirstOrDefault(x => x.UserId == idUser);
+            if (cart == null)
+            { 
+                var new_cart = new Cart();
+                new_cart.Id = new Guid();
+                new_cart.UserId = idUser; 
+                new_cart.Add(product);
+                carts.Add(new_cart);
+            }
+            else
+            {
+                var cartItem = cart.CartItems.FirstOrDefault(x => x.Product.Id == product.Id);
+                if (cartItem == null)
+                    cart.Add(product);
+                else
+                {
+                    cartItem.Amount += 1;
+                }
+            }
+        }
+
+            
+        public void Increment(Product product, int idUser)
+        {
+            Cart cart = carts.FirstOrDefault(x => x.UserId == idUser);
+            CartItem item = cart.CartItems.FirstOrDefault(x => x.Product == product);
             item.Amount += 1;
         }
 
-        public Cart? TryGetByUserId(int userId)
+        public Cart? TryGetByUserId(int userId) 
         {
-            return carts[0];
+            return carts.FirstOrDefault(x => x.UserId == userId);
         }
+
     }
 }

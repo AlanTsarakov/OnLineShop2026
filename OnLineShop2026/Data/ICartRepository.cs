@@ -4,7 +4,8 @@ namespace OnLineShop2026.Data
 {
     public interface ICartRepository
     {
-        Cart? TryGetByUserId(int userId);
-        void Increment(Guid idProduct);
+        public Cart? TryGetByUserId(int userId);
+        public void Increment(Product product, int idUser);
+        public void Add(Product product, int idUser);
     }
 }

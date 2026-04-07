@@ -18,6 +18,11 @@ namespace OnLineShop2026.Models
         
         }
 
+        public void Add(Product product)
+        {
+            this.CartItems.Add(new CartItem() { Product = product, Amount = 1 });
+        }
+
         public Cart()
         {
             CartItems = new List<CartItem>();

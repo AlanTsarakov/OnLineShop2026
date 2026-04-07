@@ -24,7 +24,12 @@
                     <td>@item.Product.Name</td>
                     <td>@item.Product.Cost</td>
                     <td>@item.Amount</td>
-                    <td><a class="btn btn-outline-primary" asp_controller="Cart" asp-action="Increment" asp-route-id="@item.Product.Id" role="button">+</a><a class="btn btn-outline-primary" href="#" role="button">-</a></td>
+                    <td><a class="btn btn-outline-primary" 
+                        asp_controller="Cart" 
+                        asp-action="Increment" 
+                        asp-route-id="@item.Product.Id" 
+                        role="button">+</a>
+                        <a class="btn btn-outline-primary" href="#" role="button">-</a></td>
                 </tr>
             }
         </tbody>

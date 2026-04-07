@@ -9,6 +9,7 @@ namespace OnLineShop2026.Controllers
 
         IProductRepository productRepository;
         ICartRepository cartRepository;
+        int idUser = 0; 
 
         public CartController(IProductRepository prodRep, ICartRepository cartRep)
         {
@@ -16,25 +17,23 @@ namespace OnLineShop2026.Controllers
             this.cartRepository = cartRep;
         }
 
-        public IActionResult Index(Guid id)
+        public IActionResult Index(int idUser)
         {
-            Product pr = productRepository.TryGetById(id);
-            CartItem cartItem = new CartItem() 
-            { 
-                Product = pr,
-                Amount = 1
-            };
-            var userCart = cartRepository.TryGetByUserId(12314);
-            userCart.CartItems.Add(cartItem);
-
+            var userCart = cartRepository.TryGetByUserId(idUser);
             return View(userCart);
         }
 
-        public IActionResult Increment(Guid id)
+        public IActionResult Add(Guid idProduct)
         {
-            var userCart = cartRepository.TryGetByUserId(12314);
-            userCart.Increment(id);
-            return View(userCart);
+            var product = productRepository.TryGetById(idProduct);
+            cartRepository.Add(product, idUser);
+            return RedirectToAction("Index"); 
+        }
+        public IActionResult Increment(Guid idProduct)
+        {
+            var product = productRepository.TryGetById(idProduct);
+            cartRepository.Increment(product, idUser);
+            return RedirectToAction("Index");
         }
     }
 }
