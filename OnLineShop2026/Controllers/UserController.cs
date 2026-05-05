@@ -14,8 +14,8 @@ namespace OnLineShop2026.Controllers
         //}
         public IActionResult Index()
         {
-            User user = new User("Алан", "Цараков", "alantsarakov@vk.com", null);
-            return View(User);
+            User user = new User("Алан", "Цараков", "alantsarakov@vk.com", "https://avatars.mds.yandex.net/i?id=7acb83785e60f3df8da676c2b2227b5d_l-5237670-images-thumbs&n=13");
+            return View(user);
         }
     }
 }
