@@ -1,0 +1,14 @@
+﻿@model User
+@{
+    ViewData["Title"] = "Подробнее о товаре";
+}
+
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        @if (@Model.UrlAvatar != null) { <img src="@Model.UrlAvatar" class="card-img-top" alt="..."> }
+        <h5 class="card-title">@Model.Name</h5>
+        <h5 class="card-title">@Model.Surname</h5>
+        <p class="card-text">@Model.Email</p>
+    </div>
+</div>
+

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OnLineShop2026.Models
 {
-    internal class User
+    public class User
     {
         public User()
         {
